@@ -1,0 +1,53 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            Pridėti naują įmonę
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="newCompanySubmit(f)" #f="ngForm">
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">Pavadinimas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" id="" class="form-control" [class.is-invalid]="!inputName.valid &&inputName.touched" ngModel required minlength="2" maxlength="30" #inputName="ngModel">
+                        <div class="helper-block" *ngIf="!inputName.valid && inputName.touched">Įmonės pavadinimas privalomas ir turi būti 2-30 simbolių ilgio.</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">Įmonės kodas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="regNumber" id="" class="form-control" [class.is-invalid]="!inputRegNumber.valid && inputRegNumber.touched" ngModel pattern="[0-9]*" #inputRegNumber="ngModel">
+                        <div class="helper-block" *ngIf="!inputRegNumber.valid && inputRegNumber.touched">Įmonės kodas turi būti sudarytas tik iš skaičių.</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">PVM registracijos kodas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="VATnumber" id="" class="form-control" [class.is-invalid]="!inputVATnumber.valid && inputVATnumber.touched" ngModel pattern="([L][T])?[0-9]+" #inputVATnumber="ngModel">
+                        <div class="helper-block" *ngIf="!inputVATnumber.valid && inputVATnumber.touched">Prašome įvesti validų PVM registracijos kodą.</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">El.paštas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="email" id="" class="form-control" [class.is-invalid]="!inputEmail.valid && inputEmail.touched" ngModel required email #inputEmail="ngModel">
+                        <div class="helper-block" *ngIf="!inputEmail.valid && inputEmail.touched">Prašome įvesti validų el.paštą.</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">Telefonas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="phone" id="" class="form-control" [class.is-invalid]="!inputPhone.valid && inputPhone.touched" ngModel phoneValidator #inputPhone="ngModel" placeholder="+370 653 12345">
+                        <div class="helper-block" *ngIf="!inputPhone.valid && inputPhone.touched">Prašome įvesti telefoną nurodytu formatu.</div>
+                    </div>
+                </div>
+                <div class="offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Pridėti naują įmonę</button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
