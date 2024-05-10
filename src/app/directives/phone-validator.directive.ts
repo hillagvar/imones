@@ -21,8 +21,7 @@ export class PhoneValidatorDirective implements Validator {
     if (control.value != null ) {
       if (phoneNumber[0] !== "+") {
         return {error: "Priekyje nera pliuso"};
-      }
-      else if (phoneNumber.length <10 || phoneNumber.length >12) {
+      } else if (phoneNumber.length <10 || phoneNumber.length >12) {
         return {error: "Netinkamas ilgis"};
       } else if (isNaN(Number(phoneNumber.slice(1,phoneNumber.length)))) {
         return {error: "Netinkami simboliai"};
