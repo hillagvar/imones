@@ -13,7 +13,7 @@ import { PhoneValidatorDirective } from '../../../directives/phone-validator.dir
 export class NewCompanyComponent {
 
   public newCompanySubmit(f: NgForm) {
-    console.log(f.form);
+    console.log(f.form.value);
   }
 
 }
