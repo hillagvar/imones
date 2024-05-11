@@ -10,7 +10,7 @@
                     <div class="col-sm-9">
                         <input class="form-control" formControlName="name" [class.is-invalid]="!contactForm.get('name')?.valid && contactForm.get('name')?.touched">
                         <div class="helper-block" *ngIf="!contactForm.get('name')?.valid && contactForm.get('name')?.touched">
-                            Vardas yra privalomas ir turi būti ne trumpesnis nei 2 raidės.
+                            Įveskite vardą, ne trumpesnį nei 2 ir ne ilgesnį nei 30 simbolių. Galima naudoti tik raides, tarpą ir brūkšnelį.
                         </div>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                     <div class="col-sm-9">
                         <input class="form-control" formControlName="surname" [class.is-invalid]="!contactForm.get('surname')?.valid && contactForm.get('surname')?.touched">
                         <div class="helper-block" *ngIf="!contactForm.get('surname')?.valid && contactForm.get('surname')?.touched">
-                            Pavardė yra privaloma ir turi būti ne trumpesnė nei 2 raidės.
+                            Įveskite pavardę, ne trumpesnę nei 2 ir ne ilgesnę nei 30 simbolių. Galima naudoti tik raides, tarpą ir brūkšnelį.
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                     <div class="col-sm-9">
                         <input class="form-control" formControlName="position" [class.is-invalid]="!contactForm.get('position')?.valid && contactForm.get('position')?.touched">
                         <div class="helper-block" *ngIf="!contactForm.get('position')?.valid && contactForm.get('position')?.touched">
-                            Pareigos yra privalomos.
+                            Įveskite pareigų pavadinimą, ne trumpesnį nei 3 ir ne ilgesnį nei 30 simbolių.
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                             <option *ngFor="let company of companyList" value="{{company.id}}">{{company.name}}</option>
                         </select>
                         <div class="helper-block" *ngIf="!contactForm.get('company')?.valid && contactForm.get('company')?.touched">
-                            Įmonė yra privaloma.
+                            Pasirinkite įmonę.
                         </div>
                     </div>
                 </div>
@@ -51,9 +51,9 @@
                     <div class="col-sm-9">
                         <div class="row" formArrayName="phones">
                             <div class="col-sm-12 mb-3" *ngFor="let phone of phones; let i = index">
-                                <input class="form-control" [formControlName]="i" [class.is-invalid]="!phone.valid && phone.touched">
+                                <input class="form-control" [formControlName]="i" [class.is-invalid]="!phone.valid && phone.touched" placeholder="+37060000000">
                                 <div class="helper-block" *ngIf="!phone.valid && phone.touched">
-                                    Telefono numeris yra privalomas.
+                                    Įveskite bent vieną telefono numerį nurodytu formatu (10-12 simbolių).
                                 </div>
                             </div>
                         </div>
@@ -64,8 +64,10 @@
                     </div>
                 </div>
 
-                <div class="offset-sm-2">
-                    <button type="submit" class="btn btn-primary">Pridėti naują kontaktą</button>
+                <div class="row mb-2">
+                    <div class="col-sm-3 offset-sm-3">
+                        <button class="btn btn-success" [disabled]="!contactForm.valid">Pridėti</button>
+                    </div>
                 </div>
 
 

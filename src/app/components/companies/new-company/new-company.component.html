@@ -40,10 +40,11 @@
                         <div class="helper-block" *ngIf="!inputPhone.valid && inputPhone.touched">Prašome įvesti telefoną nurodytu formatu.</div>
                     </div>
                 </div>
-                <div class="offset-sm-2">
-                    <button type="submit" class="btn btn-primary">Pridėti naują įmonę</button>
+                <div class="row mt-4">
+                    <div class="offset-sm-2">
+                        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Pridėti naują įmonę</button>
+                    </div>
                 </div>
-
 
             </form>
 
