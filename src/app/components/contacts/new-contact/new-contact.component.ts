@@ -34,8 +34,8 @@ export class NewContactComponent {
 
   public onSubmit() {
     this.contactService.addContact(this.contactForm.value).subscribe(() => {
-      console.log(this.contactForm);
-      // this.contactForm.reset();
+      // console.log(this.contactForm);
+      this.contactForm.reset();
       
     })
   }
