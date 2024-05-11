@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { PhoneValidatorDirective } from '../../../directives/phone-validator.directive';
+import { CompanyService } from '../../../services/company.service';
 
 @Component({
   selector: 'app-new-company',
@@ -12,8 +13,14 @@ import { PhoneValidatorDirective } from '../../../directives/phone-validator.dir
 })
 export class NewCompanyComponent {
 
+  constructor(private companyService: CompanyService) { }
+
   public newCompanySubmit(f: NgForm) {
-    console.log(f.form.value);
+    // console.log(f.form.value);
+
+    this.companyService.addCompany(f.form.value).subscribe(() => {
+      f.reset();
+    });
   }
 
 }

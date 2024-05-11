@@ -1,0 +1,77 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            Pridėti naują kontaktą
+        </div>
+        <div class="card-body">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Vardas:</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" formControlName="name" [class.is-invalid]="!contactForm.get('name')?.valid && contactForm.get('name')?.touched">
+                        <div class="helper-block" *ngIf="!contactForm.get('name')?.valid && contactForm.get('name')?.touched">
+                            Vardas yra privalomas ir turi būti ne trumpesnis nei 2 raidės.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Pavardė:</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" formControlName="surname" [class.is-invalid]="!contactForm.get('surname')?.valid && contactForm.get('surname')?.touched">
+                        <div class="helper-block" *ngIf="!contactForm.get('surname')?.valid && contactForm.get('surname')?.touched">
+                            Pavardė yra privaloma ir turi būti ne trumpesnė nei 2 raidės.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Pareigos:</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" formControlName="position" [class.is-invalid]="!contactForm.get('position')?.valid && contactForm.get('position')?.touched">
+                        <div class="helper-block" *ngIf="!contactForm.get('position')?.valid && contactForm.get('position')?.touched">
+                            Pareigos yra privalomos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Įmonė:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" formControlName="company" [class.is-invalid]="!contactForm.get('company')?.valid && contactForm.get('company')?.touched">
+                            <option *ngFor="let company of companyList" value="{{company.id}}">{{company.name}}</option>
+                        </select>
+                        <div class="helper-block" *ngIf="!contactForm.get('company')?.valid && contactForm.get('company')?.touched">
+                            Įmonė yra privaloma.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Telefono numeriai:</label>
+                    <div class="col-sm-9">
+                        <div class="row" formArrayName="phones">
+                            <div class="col-sm-12 mb-3" *ngFor="let phone of phones; let i = index">
+                                <input class="form-control" [formControlName]="i" [class.is-invalid]="!phone.valid && phone.touched">
+                                <div class="helper-block" *ngIf="!phone.valid && phone.touched">
+                                    Telefono numeris yra privalomas.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-outline-secondary me-3" (click)="addPhoneField()">Pridėti papildomą telefoną</button>
+                            <button type="button" class="btn btn-outline-secondary" (click)="removePhoneField()">Pašalinti papildomą telefoną</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Pridėti naują kontaktą</button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
